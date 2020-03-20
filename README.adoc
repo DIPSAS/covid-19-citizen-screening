@@ -1,0 +1,22 @@
+= Covid-19 – Citizen screening 
+Note about the data model proposed by DIPS AS, Bjørn Næss
+v0.9 / 19.03.2020
+
+== Preface
+
+=== Purpose 
+This document describes the information model for screening of citizens in the Covid-19 pandemic situation. The models are developed to support two needs: 
+
+.	To monitor the public health state to be able to plan and manage the health care resources and utilizing of the hospital beds. 
+.	To monitor the disease state of healthcare professionals to optimize the usage of a possible limited resource. Put another way; the society need as many healthcare professionals as possible to handle the crisis. 
+
+The intended audience includes: 
+*	Vendors who wants to develop applications for the screening 
+*	Health care providers who might acquire such solutions 
+* 	Standards bodies producing health informatics standards
+
+===	Status 
+The models are in development. A few iteration with possible users of the models are needed to finalize a production ready version.
+
+=== Documentation 
+The complete documenation is found here: https://365dips-my.sharepoint.com/:w:/g/personal/bna_dips_no/EWE3alEdl2BDjHsHkm--0OEBu9SSNG5yACVQ1RF3KJN2Kw?e=cwo9mw[]

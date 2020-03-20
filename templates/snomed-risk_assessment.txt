@@ -1,0 +1,2 @@
+SNOMED-CT::723509005::Høy risiko
+SNOMED-CT::723505004::Lav risiko

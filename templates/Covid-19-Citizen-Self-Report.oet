@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="openEHR/v1/Template">
+  <id>693296c0-4ad1-443f-a68f-c9538d06b351</id>
+  <name>Covid-19-Citizen-Self-Report</name>
+  <description>
+    <lifecycle_state>in_development</lifecycle_state>
+    <details>
+      <purpose>Benyttes for å dokumentere helsetilstanden til innbyggere ved selv-rapportering gjennom digitale innbyggerportaler som f.eks. Helse Norge. Datasettet er utviklet slik at flere leverandører kan benytte modellene for å utvikle egne brukergrensesnitt og applikasjoner, og samtidig sikre interoperabilitet mellom systemene. </purpose>
+      <keywords>
+        <item>COVID-19, screening</item>
+      </keywords>
+      <use>Brukes som en generisk container på dokument-nivå for å registrere detaljer om en enkel interaksjon, kontakt eller omsorgshendelse mellom et individ og helsepersonell. Den kliniske kontakten kan være direkte ved ansikt-til-ansikt, indirekte via telefon eller videokonferanse, eller asynkron via elektronisk konsultasjon eller brev. Modalitet kan registreres, om nødvendig, via referansemodell-attributten COMPOSITION/mode.
+
+Innholdskomponenten er bevisst latt være ubegrenset. Dette tillater bruk av enhver SECTION- og/eller ENTRY-arketype som er nødvendig/hensiktsmessig i templaten brukt i den aktuelle kliniske konteksten.
+
+Tross ubegrenset plass for klinisk innhold, gir spesifikasjonen av COMPOSITION.encounter betydelig verdi ved å tillate eksplisitt spørring på alle kontakter innenfor en pasientjournal.
+
+Komponenten 'Context' har en valgfri utvidelse ('SLOT') som kan brukes ved design av templaten, for å:
+-legge til valgfri kontekstuell informasjon om, f.eks., episoden; eller
+-tillate harmonisering eller justering i forhold til andre informasjonsmodeller, f.eks. FHIR eller CIMI, som f.eks. eksplisitte representasjoner av 'Participants' som i en openEHR-arketype ordinært vil håndteres av openEHR-referansemodellen.
+
+Typiske eksempler kan være en poliklinikktime, en sykepleierobservasjon eller en telemedisinsk konsultasjon.</use>
+      <misuse>Brukes ikke til registrering av detaljer om et helt behandlingsforløp.
+Brukes ikke til å inneholde persistent, oppsummert informasjon om individet, som f.eks. problemliste eller medikamentliste.
+Brukes ikke som rapport fra en diagnostisk service, som billeddiagnostikk eller laboratorieprøve.
+Brukes ikke til å representere FHIR-ressursen av samme navn - disse har forskjellig omfang og bruksområde.</misuse>
+      <copyright>© Nasjonal IKT HF</copyright>
+    </details>
+    <other_details>
+      <item>
+        <key>MetaDataSet:Sample Set </key>
+        <value>Template metadata sample set </value>
+      </item>
+      <item>
+        <key>Acknowledgements</key>
+        <value />
+      </item>
+      <item>
+        <key>Business Process Level</key>
+        <value />
+      </item>
+      <item>
+        <key>Care setting</key>
+        <value />
+      </item>
+      <item>
+        <key>Client group</key>
+        <value />
+      </item>
+      <item>
+        <key>Clinical Record Element</key>
+        <value />
+      </item>
+      <item>
+        <key>Copyright</key>
+        <value />
+      </item>
+      <item>
+        <key>Issues</key>
+        <value />
+      </item>
+      <item>
+        <key>Owner</key>
+        <value />
+      </item>
+      <item>
+        <key>Sign off</key>
+        <value />
+      </item>
+      <item>
+        <key>Speciality</key>
+        <value />
+      </item>
+      <item>
+        <key>User roles</key>
+        <value />
+      </item>
+      <item>
+        <key>MD5-CAM-1.0.1</key>
+        <value>c59c2431b4da0115017cd2b8fa73d2cc</value>
+      </item>
+      <item>
+        <key>PARENT:MD5-CAM-1.0.1</key>
+        <value>812645b3f2c4efd632cc4c0916030918</value>
+      </item>
+    </other_details>
+  </description>
+  <definition xsi:type="COMPOSITION" archetype_id="openEHR-EHR-COMPOSITION.encounter.v1" concept_name="Klinisk kontakt" name="Covid-19-Citizen-Self-Report">
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Screening">
+      <Item xsi:type="OBSERVATION" archetype_id="openEHR-EHR-OBSERVATION.story.v1" concept_name="Anamnese" max="1" path="/items">
+        <Rule path="/data[at0001]/events[at0002]" max="1" />
+        <Rule path="/data[at0001]/events[at0002]/data[at0003]/items[at0004]" max="1" />
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.symptom_sign-cvid.v0" concept_name="Symptom på COVID-19" max="1" path="/data[at0001]/events[at0002]/data[at0003]/items[at0006]" name="Hoste">
+          <Rule path="/items[at0001.1]">
+            <constraint xsi:type="textConstraint">
+              <includedValues>snomed-ct::49727002::Hoste</includedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0035]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0151]" max="0" />
+          <Rule path="/items[at0175]" max="0" />
+          <Rule path="/items[at0186]" max="0" />
+          <Rule path="/items[at0152]" max="0" />
+          <Rule path="/items[at0164]" max="0" />
+          <Rule path="/items[at0028]" max="0" />
+          <Rule path="/items[at0021]" max="0" />
+          <Rule path="/items[at0026]" max="0" />
+          <Rule path="/items[at0180]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0018]" max="0" />
+          <Rule path="/items[at0165]" max="0" />
+          <Rule path="/items[at0155]" max="0" />
+          <Rule path="/items[at0037]" max="0" />
+          <Rule path="/items[at0057]" max="0" />
+          <Rule path="/items[at0031]" max="0" />
+          <Rule path="/items[at0163]" max="0" />
+          <Rule path="/items[at0.1]">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0.4</excludedValues>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.symptom_sign-cvid.v0" concept_name="Symptom på COVID-19" max="1" path="/data[at0001]/events[at0002]/data[at0003]/items[at0006]" name="Kortpustet">
+          <Rule path="/items[at0001.1]">
+            <constraint xsi:type="textConstraint">
+              <includedValues>SNOMED-CT::267036007::Kortpustet</includedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0035]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0151]" max="0" />
+          <Rule path="/items[at0175]" max="0" />
+          <Rule path="/items[at0186]" max="0" />
+          <Rule path="/items[at0152]" max="0" />
+          <Rule path="/items[at0164]" max="0" />
+          <Rule path="/items[at0028]" max="0" />
+          <Rule path="/items[at0021]" max="0" />
+          <Rule path="/items[at0026]" max="0" />
+          <Rule path="/items[at0180]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0018]" max="0" />
+          <Rule path="/items[at0165]" max="0" />
+          <Rule path="/items[at0155]" max="0" />
+          <Rule path="/items[at0037]" max="0" />
+          <Rule path="/items[at0057]" max="0" />
+          <Rule path="/items[at0031]" max="0" />
+          <Rule path="/items[at0163]" max="0" />
+          <Rule path="/items[at0.1]">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0.4</excludedValues>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.symptom_sign-cvid.v0" concept_name="Symptom på COVID-19" max="1" path="/data[at0001]/events[at0002]/data[at0003]/items[at0006]" name="Feber">
+          <Rule path="/items[at0001.1]">
+            <constraint xsi:type="textConstraint">
+              <includedValues>SNOMED-CT::386661006::Feber</includedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0035]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0151]" max="0" />
+          <Rule path="/items[at0175]" max="0" />
+          <Rule path="/items[at0186]" max="0" />
+          <Rule path="/items[at0152]" max="0" />
+          <Rule path="/items[at0164]" max="0" />
+          <Rule path="/items[at0028]" max="0" />
+          <Rule path="/items[at0021]" max="0" />
+          <Rule path="/items[at0026]" max="0" />
+          <Rule path="/items[at0180]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0018]" max="0" />
+          <Rule path="/items[at0165]" max="0" />
+          <Rule path="/items[at0155]" max="0" />
+          <Rule path="/items[at0037]" max="0" />
+          <Rule path="/items[at0057]" max="0" />
+          <Rule path="/items[at0031]" max="0" />
+          <Rule path="/items[at0163]" max="0" />
+          <Rule path="/items[at0.1]">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0.4</excludedValues>
+            </constraint>
+          </Rule>
+        </Items>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.symptom_sign-cvid.v0" concept_name="Symptom på COVID-19" max="1" path="/data[at0001]/events[at0002]/data[at0003]/items[at0006]" name="Generell helsetilstand">
+          <Rule path="/items[at0001.1]">
+            <constraint xsi:type="textConstraint">
+              <includedValues>SNOMED-CT::365275006::Velbefinnende</includedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0035]" max="0" />
+          <Rule path="/items[at0002]" max="0" />
+          <Rule path="/items[at0151]" max="0" />
+          <Rule path="/items[at0175]" max="0" />
+          <Rule path="/items[at0186]" max="0" />
+          <Rule path="/items[at0152]" max="0" />
+          <Rule path="/items[at0164]" max="0" />
+          <Rule path="/items[at0028]" max="0" />
+          <Rule path="/items[at0021]" max="0" />
+          <Rule path="/items[at0026]" max="1" />
+          <Rule path="/items[at0180]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0018]" max="0" />
+          <Rule path="/items[at0165]" max="0" />
+          <Rule path="/items[at0155]" max="0" />
+          <Rule path="/items[at0037]" max="0" />
+          <Rule path="/items[at0161]" max="0" />
+          <Rule path="/items[at0057]" max="0" />
+          <Rule path="/items[at0031]" max="0" />
+          <Rule path="/items[at0163]" max="0" />
+          <Rule path="/items[at0.1]" max="0" />
+        </Items>
+      </Item>
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.health_risk-covid.v0" concept_name="Helserisiko" max="1" path="/items" name="Helserisiko COVID">
+        <Rule path="/data[at0001]/items[at0016]" max="1" name="Har vært i et kjent utbruddsområde?" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har vært i et kjent utbruddsområde?']/items[at0013.1]">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0.9</excludedValues>
+            <excludedValues>local::at0.10</excludedValues>
+            <excludedValues>local::at0.11</excludedValues>
+            <excludedValues>local::at0.12</excludedValues>
+            <excludedValues>local::at0.13</excludedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har vært i et kjent utbruddsområde?']/items[at0017]">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0026</excludedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har vært i et kjent utbruddsområde?']/items[at0029]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har vært i et kjent utbruddsområde?']/items[at0028]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har vært i et kjent utbruddsområde?']/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har vært i et kjent utbruddsområde?']/items[at0030]" max="0" />
+        <Rule path="/data[at0001]/items[at0016]" max="1" clone="true" name="Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?']/items[at0013.1]">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0.10</excludedValues>
+            <excludedValues>local::at0.11</excludedValues>
+            <excludedValues>local::at0.12</excludedValues>
+            <excludedValues>local::at0.13</excludedValues>
+            <excludedValues>local::at0.14</excludedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?']/items[at0017]">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0026</excludedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?']/items[at0014]" default="Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?']/items[at0029]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?']/items[at0028]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?']/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har hatt nærkontakt med et bekreftet tilfelle av 2019-nCoV-infeksjon?']/items[at0030]" max="0" />
+        <Rule path="/data[at0001]/items[at0016]" max="1" clone="true" name="Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?']/items[at0013.1]">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0.10</excludedValues>
+            <excludedValues>local::at0.11</excludedValues>
+            <excludedValues>local::at0.12</excludedValues>
+            <excludedValues>local::at0.13</excludedValues>
+            <excludedValues>local::at0.14</excludedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?']/items[at0017]">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0026</excludedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?']/items[at0014]" default="Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?']/items[at0029]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?']/items[at0028]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?']/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0016 and name/value='Har pleiet/behandlet, håndtert prøvemateriale fra eller på annen måte hatt tilsvarende nærkontakt?']/items[at0030]" max="0" />
+        <Rule path="/data[at0001]/items[at0003]">
+          <constraint xsi:type="textConstraint">
+            <includedValues>SNOMED-CT::723509005::Høy risiko</includedValues>
+            <includedValues>SNOMED-CT::723505004::Lav risiko</includedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0020]" max="0" />
+        <Rule path="/data[at0001]/items[at0023]" max="0" />
+        <Rule path="/data[at0001]/items[at0004]" max="0" />
+        <Rule path="/protocol[at0010]/items[at0025]" max="0" />
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Sykdomsstatus">
+      <Item xsi:type="EVALUATION" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis-cvid.v0" concept_name="Problem/diagnose" max="2" path="/items">
+        <Rule path="/data[at0001]/items[at0002]">
+          <constraint xsi:type="textConstraint">
+            <includedValues>SNOMED-CT::840533007::Sykdom/infeksjon forårsaket av Covid-19</includedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/data[at0001]/items[at0009]" max="0" />
+        <Rule path="/data[at0001]/items[at0012]" max="0" />
+        <Rule path="/data[at0001]/items[at0077]" max="0" />
+        <Rule path="/data[at0001]/items[at0003]" name="Dato/tid for bekreftelse av sykdom" />
+        <Rule path="/data[at0001]/items[at0005]" max="0" />
+        <Rule path="/data[at0001]/items[at0072]" max="0" />
+        <Rule path="/data[at0001]/items[at0030]" name="Dato/tid for bedring" />
+        <Rule path="/data[at0001]/items[at0073.1]">
+          <constraint xsi:type="textConstraint">
+            <excludedValues>local::at0075</excludedValues>
+            <excludedValues>local::at0.1</excludedValues>
+          </constraint>
+        </Rule>
+        <Items xsi:type="CLUSTER" archetype_id="openEHR-EHR-CLUSTER.problem_qualifier.v1" concept_name="Problem/diagnose-kvalifikator" max="1" path="/data[at0001]/items[at0039]">
+          <Rule path="/items[at0004]" max="0" />
+          <Rule path="/items[at0060]" max="0" />
+          <Rule path="/items[at0003]" max="0" />
+          <Rule path="/items[at0083]">
+            <constraint xsi:type="textConstraint">
+              <excludedValues>local::at0087</excludedValues>
+            </constraint>
+          </Rule>
+          <Rule path="/items[at0089]" max="0" />
+          <Rule path="/items[at0001]" max="0" />
+          <Rule path="/items[at0071]" max="0" />
+          <Rule path="/items[at0077]" max="0" />
+          <Rule path="/items[at0063]" max="0" />
+          <Rule path="/items[at0073]" max="0" />
+        </Items>
+      </Item>
+    </Content>
+    <Content xsi:type="SECTION" archetype_id="openEHR-EHR-SECTION.adhoc.v1" concept_name="Ad hoc heading" max="1" path="/content" name="Isolasjonsstatus">
+      <Item xsi:type="ACTION" archetype_id="openEHR-EHR-ACTION.procedure.v1" concept_name="Prosedyre" path="/items">
+        <Rule path="/description[at0001]/items[at0002]">
+          <constraint xsi:type="textConstraint">
+            <includedValues>SNOMED-CT170497006::Hjemmeisolasjon</includedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/description[at0001]/items[at0049]" max="0" />
+        <Rule path="/description[at0001]/items[at0065]" max="0" />
+        <Rule path="/description[at0001]/items[at0058]" max="0" />
+        <Rule path="/description[at0001]/items[at0063]" max="0" />
+        <Rule path="/description[at0001]/items[at0048]" max="0" />
+        <Rule path="/description[at0001]/items[at0069]" max="0" />
+        <Rule path="/description[at0001]/items[at0006]" max="0" />
+        <Rule path="/description[at0001]/items[at0066]" name="Start hjemmeisolasjon" />
+        <Rule path="/description[at0001]/items[at0060]" name="Slutt hjemmeisolasjon" />
+        <Rule path="/description[at0001]/items[at0061]" name="Samlet varighet for hjemmeisolasjon" />
+        <Rule path="/description[at0001]/items[at0067]">
+          <constraint xsi:type="textConstraint">
+            <includedValues>COVID19::COV-HK::Hjemmekarantene</includedValues>
+            <includedValues>COVID19::COV-HI::Hjemmeisolasjon</includedValues>
+          </constraint>
+        </Rule>
+        <Rule path="/description[at0001]/items[at0014]" max="0" />
+        <Rule path="/description[at0001]/items[at0005]" max="0" />
+      </Item>
+    </Content>
+    <Context />
+  </definition>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-COMPOSITION.encounter.v1">
+    <digest id="MD5-CAM-1.0.1">812645b3f2c4efd632cc4c0916030918</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-SECTION.adhoc.v1">
+    <digest id="MD5-CAM-1.0.1">833221C23E2B25AD3CB9B0B78EE33740</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-OBSERVATION.story.v1">
+    <digest id="MD5-CAM-1.0.1">CF9ADF5EF4D2BC6F8C0BF8FFED32E2A4</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.symptom_sign-cvid.v0">
+    <digest id="MD5-CAM-1.0.1">9040258d4de53addb2c06ecde53a5f4e</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.health_risk-covid.v0">
+    <digest id="MD5-CAM-1.0.1">f00ce4871c1adab0e543bfd2ca98c437</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-EVALUATION.problem_diagnosis-cvid.v0">
+    <digest id="MD5-CAM-1.0.1">bd4ee94d63ebb813b0d0325c95d098f6</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-CLUSTER.problem_qualifier.v1">
+    <digest id="MD5-CAM-1.0.1">A686BB41159607FA3CC18F63F37B97DA</digest>
+  </integrity_checks>
+  <integrity_checks xsi:type="ArchetypeIntegrity" archetype_id="openEHR-EHR-ACTION.procedure.v1">
+    <digest id="MD5-CAM-1.0.1">CCA98FC01E850D302CF1E149938C4E54</digest>
+  </integrity_checks>
+</template>

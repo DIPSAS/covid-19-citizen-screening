@@ -1,0 +1,2 @@
+COVID19::COV-HK::Hjemmekarantene
+COVID19::COV-HI::Hjemmeisolasjon
